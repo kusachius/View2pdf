@@ -29,7 +29,6 @@ namespace Kusachius.html2pdf
             if (pdfConvertUrl == null)
             {
                 pdfConvertUrl = "http://127.0.0.1:3333";
-                pdfConvertUrl = "https://alstoragetest.herokuapp.com";
             }
 
 
