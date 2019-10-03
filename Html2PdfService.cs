@@ -12,26 +12,30 @@ namespace Kusachius.html2pdf
 
         private async Task<HttpResponseMessage> Html2PdfResponseAsync(string html)
         {
-            var client = new HttpClient();
-
-            ByteArrayContent bytes = new ByteArrayContent(System.Text.Encoding.Unicode.GetBytes(html));
-
-            var x = new StringContent(html);
-            MultipartFormDataContent multiContent = new MultipartFormDataContent
+            using (var client = new HttpClient())
             {
-                { x, "file", "xxx.html" }
-            };
 
-            var pdfConvertUrl = Environment.GetEnvironmentVariable("PDF_CONVERT_URL");
-            if (pdfConvertUrl == null)
-            {
-                pdfConvertUrl = "http://127.0.0.1:3333";
+                using (ByteArrayContent bytes = new ByteArrayContent(System.Text.Encoding.Unicode.GetBytes(html)))
+                {
+
+                    var x = new StringContent(html);
+                    MultipartFormDataContent multiContent = new MultipartFormDataContent
+                {
+                    { x, "file", "xxx.html" }
+                };
+
+                    var pdfConvertUrl = Environment.GetEnvironmentVariable("PDF_CONVERT_URL");
+                    if (pdfConvertUrl == null)
+                    {
+                        pdfConvertUrl = "http://127.0.0.1:3333";
+                    }
+
+
+                    return await client.PostAsync(pdfConvertUrl, multiContent);
+                    // return response.Content;
+                    //return await response.Content.ReadAsStreamAsync();// .ReadAsByteArrayAsync();
+                }
             }
-
-
-            return await client.PostAsync(pdfConvertUrl, multiContent);
-            // return response.Content;
-            //return await response.Content.ReadAsStreamAsync();// .ReadAsByteArrayAsync();
         }
 
         /// <summary>
