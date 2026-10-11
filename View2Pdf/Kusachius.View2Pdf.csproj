@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ReleaseVersion>1.4</ReleaseVersion>
+    <TargetFramework>net10.0</TargetFramework>
+    <ReleaseVersion>1.10</ReleaseVersion>
     <PackageId>Kusachius.View2Pdf</PackageId>
     <PackageVersion>$(ReleaseVersion).0</PackageVersion>
     <Authors>Aldis Arust</Authors>
@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
