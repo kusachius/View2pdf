@@ -30,8 +30,6 @@ namespace Kusachius.html2pdf
 
 
 					return await client.PostAsync(pdfConvertUrl, multiContent);
-					// return response.Content;
-					//return await response.Content.ReadAsStreamAsync();// .ReadAsByteArrayAsync();
 				}
 			}
 		}
@@ -57,36 +55,5 @@ namespace Kusachius.html2pdf
 			var response = await Html2PdfResponseAsync(html);
 			return await response.Content.ReadAsStreamAsync();
 		}
-
-		///// <summary>
-		///// Html2s the pdf async1.
-		///// </summary>
-		///// <returns>The pdf async1.</returns>
-		///// <param name="html">Html.</param>
-		//public async Task<byte[]> Html2PdfAsync1(string html)
-		//{
-		//    var client = new HttpClient();
-
-		//    ByteArrayContent bytes = new ByteArrayContent(System.Text.Encoding.Unicode.GetBytes(html));
-
-		//    var base64 = Convert.ToBase64String(await bytes.ReadAsByteArrayAsync());
-
-		//    string json = JsonConvert.SerializeObject(new { contents = base64, options = new { margin_top = "6"  } });
-		//    //string json = "{\"contents\":\"" + base64 + "\", \"options\" : {} }";
-
-
-		//    var pdfConvertUrl = Environment.GetEnvironmentVariable("PDF_CONVERT_URL");
-		//    if (pdfConvertUrl == null)
-		//    {
-		//        pdfConvertUrl = "http://127.0.0.1:3333";
-		//        //pdfConvertUrl = "https://gooduser:secretpassword@docker-wkhtmltopdf-aas.herokuapp.com";
-		//    }
-
-		//    var cont = new StringContent(json, Encoding.UTF8, "application/json");
-		//    var response = client.PostAsync(pdfConvertUrl, cont ).Result;
-		//    byte[] pdf = await response.Content.ReadAsByteArrayAsync();
-
-		//    return pdf;
-		//}
 	}
 }
