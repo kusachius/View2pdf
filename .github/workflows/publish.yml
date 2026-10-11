@@ -55,6 +55,9 @@ jobs:
       - name: Build
         run: dotnet build Kusachius.View2Pdf.sln --configuration Release --no-restore
 
+      - name: Test
+        run: dotnet test View2Pdf.Test/Kusachius.View2Pdf.Test.csproj --configuration Release --no-build
+
       - name: Pack
         run: >
           dotnet pack View2Pdf/Kusachius.View2Pdf.csproj
